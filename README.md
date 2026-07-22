@@ -1,4 +1,5 @@
 📄 Smart Resume Analyzer
+
 An AI-powered Resume Analyzer built using Streamlit, Python, and Ollama (Llama3).
 This project analyzes resumes, calculates ATS scores, matches resumes with job descriptions, detects skills, and provides AI-powered resume improvement suggestions.
 
