@@ -184,7 +184,7 @@ You can deploy this project on:
 
 # 👨‍💻 Author
 
-**Piyush Chauhan**
+**Rishi Raj Beniwal**
 
 ---
 
