@@ -41,8 +41,8 @@ def extract_text(file):
             text += page.extract_text() or ""
     return text.lower()
 
-skills_list = ["python", "java", "c++", "machine learning", "sql", "react"]
 
+ jd_skills = extract_skills(job_desc)
 # =========================
 #  MAIN LOGIC
 # =========================
@@ -53,9 +53,12 @@ if file:
     st.write(text[:500])
 
     # Skills
-    found_skills = [s for s in skills_list if s in text]
-    missing_skills = [s for s in skills_list if s not in text]
-    score = min(len(found_skills) * 15, 100)
+    found_skills = [s for s in jd_skills if s in text]
+    missing_skills = [s for s in jd_skills if s not in text]
+    if len(jd_skills) > 0:
+        score = int((len(found_skills) / len(jd_skills)) * 100)
+    else:
+        score = 0
 
     # Suggestions
     st.subheader(" Suggestions")
