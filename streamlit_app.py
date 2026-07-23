@@ -40,9 +40,7 @@ def extract_text(file):
         for page in pdf.pages:
             text += page.extract_text() or ""
     return text.lower()
-
-
- jd_skills = extract_skills(job_desc)
+jd_skills = extract_skills(job_desc)
 # =========================
 #  MAIN LOGIC
 # =========================
