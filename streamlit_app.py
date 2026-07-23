@@ -40,7 +40,27 @@ def extract_text(file):
         for page in pdf.pages:
             text += page.extract_text() or ""
     return text.lower()
-jd_skills = extract_skills(job_desc)
+
+
+all_skills = [
+    "python", "java", "c", "c++", "c#", "javascript",
+    "html", "css", "react", "angular", "node.js",
+    "sql", "mysql", "postgresql", "mongodb",
+    "machine learning", "deep learning",
+    "tensorflow", "keras", "pytorch",
+    "flask", "django", "streamlit",
+    "power bi", "tableau", "excel",
+    "git", "github", "docker",
+    "aws", "azure", "gcp",
+    "linux", "rest api"
+]
+
+def extract_skills(text):
+    text = text.lower()
+    return list(set(skill for skill in all_skills if skill in text))
+
+
+jd_skills = extract_skills(job_desc
 # =========================
 #  MAIN LOGIC
 # =========================
