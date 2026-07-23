@@ -3,7 +3,7 @@ import pdfplumber
 import pandas as pd
 
 # =========================
-# 🎨 UI DESIGN
+#  UI DESIGN
 # =========================
 st.markdown("""
 <style>
@@ -22,17 +22,17 @@ h1 {
 </style>
 """, unsafe_allow_html=True)
 
-st.title("📄 Smart Resume Analyzer")
-st.markdown("### 🚀 Upload your resume and get instant insights")
+st.title(" Smart Resume Analyzer")
+st.markdown("###  Upload your resume and get instant insights")
 
 # =========================
-# 📥 INPUTS
+#  INPUTS
 # =========================
 file = st.file_uploader("Upload Resume (PDF)")
 job_desc = st.text_area("Paste Job Description")
 
 # =========================
-# 🧠 FUNCTIONS
+#  FUNCTIONS
 # =========================
 def extract_text(file):
     text = ""
@@ -44,12 +44,12 @@ def extract_text(file):
 skills_list = ["python", "java", "c++", "machine learning", "sql", "react"]
 
 # =========================
-# 🚀 MAIN LOGIC
+#  MAIN LOGIC
 # =========================
 if file:
     text = extract_text(file)
 
-    st.subheader("📄 Extracted Text")
+    st.subheader(" Extracted Text")
     st.write(text[:500])
 
     # Skills
@@ -58,7 +58,7 @@ if file:
     score = min(len(found_skills) * 15, 100)
 
     # Suggestions
-    st.subheader("💡 Suggestions")
+    st.subheader(" Suggestions")
     if missing_skills:
         st.warning("Add these skills:")
         st.write(", ".join(missing_skills))
@@ -66,26 +66,26 @@ if file:
         st.success("Strong resume!")
 
     # =========================
-    # 📊 SCORE
+    #  SCORE
     # =========================
-    st.subheader("📊 ATS Score")
+    st.subheader(" ATS Score")
     st.progress(score)
     st.write(f"{score}/100")
 
     # =========================
-    # 📊 JOB MATCH
+    #  JOB MATCH
     # =========================
     if job_desc:
         job_words = job_desc.lower().split()
         match_count = sum(1 for w in job_words if w in text)
         match_percent = int((match_count / len(job_words)) * 100)
 
-        st.subheader("🎯 Job Match")
+        st.subheader(" Job Match")
         st.progress(match_percent)
         st.write(f"{match_percent}% match")
 
     # =========================
-    # 📊 CHART
+    #  CHART
     # =========================
     data = pd.DataFrame({
         "Type": ["Found", "Missing"],
@@ -94,22 +94,22 @@ if file:
     st.bar_chart(data.set_index("Type"))
 
     # =========================
-    # 📋 SKILL DISPLAY
+    #  SKILL DISPLAY
     # =========================
     col1, col2 = st.columns(2)
 
     with col1:
-        st.subheader("✅ Found Skills")
+        st.subheader(" Found Skills")
         for s in found_skills:
             st.success(s)
 
     with col2:
-        st.subheader("❌ Missing Skills")
+        st.subheader(" Missing Skills")
         for s in missing_skills:
             st.error(s)
 
     # =========================
-    # 📄 DOWNLOAD REPORT
+    #  DOWNLOAD REPORT
     # =========================
     report = f"""
 RESUME ANALYSIS REPORT
@@ -125,8 +125,8 @@ Score: {score}/100
     st.download_button("📄 Download Report", report)
 
 # =========================
-# ⚠️ AI NOTICE
+# AI NOTICE
 # =========================
-st.subheader("🤖 AI Assistant")
+st.subheader(" AI Assistant")
 
-st.info("⚠️ AI features are disabled on cloud. Works only locally with Ollama.")
+st.info("AI features are disabled on cloud. Works only locally with Ollama.")
