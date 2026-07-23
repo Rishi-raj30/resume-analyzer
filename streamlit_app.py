@@ -60,7 +60,7 @@ def extract_skills(text):
     return list(set(skill for skill in all_skills if skill in text))
 
 
-jd_skills = extract_skills(job_desc
+jd_skills = extract_skills(job_desc)
 # =========================
 #  MAIN LOGIC
 # =========================
